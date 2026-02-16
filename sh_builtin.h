@@ -23,9 +23,15 @@ int sh_builtin_echo(char* args[]);
 int sh_builtin_cat(char* args[]);
 int sh_builtin_uname(char* args[]);
 
+/* environment variable specific commands */
+int sh_builtin_export(char* args[]);
+int sh_builtin_unset(char* args[]);
+int sh_builtin_env(char* args[]);
+
 extern int (*builtin_commands[])(char* args[]);
 extern char* builtins[];
 
 int sh_num_builtins();
 
 #endif
+
