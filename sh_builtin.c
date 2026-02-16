@@ -19,6 +19,7 @@
 #include "sh_builtin.h"
 
 #include <stdio.h>
+#include <string.h>
 
 int sh_builtin_uname(char* args[]) {
 	/* this is a placeholder */
