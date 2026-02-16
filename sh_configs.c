@@ -17,8 +17,17 @@
  */
 
 #include "sh_configs.h"
+#include "sh_env.h"
 
 void sh_load_configs(void) {
 	/* todo: load some sh-specific configuration files, e.g. from /etc or from the user's home directory */
+	char* home = sh_get_env("HOME");
+
+	/* we do NOT have a .shrc file in place yet, so this is a placeholder */
+	/* i hope this does NOT fuck up the rest */
+	if (home != NULL) {
+		char shrc_path[512];
+		snprintf(shrc_path, sizeof(shrc_path), "%s/.shrc", home);
+	}
 }
 
