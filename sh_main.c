@@ -24,8 +24,10 @@
 #include "sh_builtin.h"
 #include "sh_configs.h"
 #include "sh_exec.h"
+#include "sh_env.h"
 
 int main(int argc, char* argv[]) {
+	sh_env_init();
 	sh_load_configs();
 
 	fprintf(stdout, "Latbase Shell, under construction\n");
