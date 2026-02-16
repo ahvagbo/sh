@@ -29,7 +29,7 @@ typedef struct {
 	char* value;
 } env_var_t;
 
-static env_vat_t env_vars[MAX_ENV_VARS];
+static env_var_t env_vars[MAX_ENV_VARS];
 static int env_count = 0;
 
 extern char **environ;

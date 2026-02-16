@@ -19,9 +19,11 @@
 #include "sh_configs.h"
 #include "sh_env.h"
 
+#include <stdio.h>
+
 void sh_load_configs(void) {
 	/* todo: load some sh-specific configuration files, e.g. from /etc or from the user's home directory */
-	char* home = sh_get_env("HOME");
+	char* home = sh_env_get("HOME");
 
 	/* we do NOT have a .shrc file in place yet, so this is a placeholder */
 	/* i hope this does NOT fuck up the rest */

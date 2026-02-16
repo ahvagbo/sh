@@ -17,6 +17,7 @@
  */
 
 #include "sh_builtin.h"
+#include "sh_env.h"
 
 #include <stdio.h>
 #include <string.h>
