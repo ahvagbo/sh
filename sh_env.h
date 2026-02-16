@@ -1,4 +1,4 @@
-/* sh_configs.c - The brains of the config loader function. */
+/* sh_env.h - Environment variable management */
 /* Copyright (C) 2026 Iurie Jurja */
 
 /*
@@ -13,23 +13,26 @@
  * PURPOSE. See the GNU General Public License for more details.
  *
  * You should have received a copy of the GNU General Public License along with Latbase Shell. If not,
- * see <https://www.gnu.org/licenses/>/
+ * see <https://www.gnu.org/licenses/>
  */
 
-#include "sh_configs.h"
-#include "sh_env.h"
+#ifndef SH_ENV_H
+#define SH_ENV_H 1
 
-#include <stdio.h>
+/* initialize the environment from the parent process */
+void sh_env_init(void);
 
-void sh_load_configs(void) {
-	/* todo: load some sh-specific configuration files, e.g. from /etc or from the user's home directory */
-	char* home = sh_env_get("HOME");
+/* gets the environment variable name */
+char* sh_env_get(const char* name);
 
-	/* we do NOT have a .shrc file in place yet, so this is a placeholder */
-	/* i hope this does NOT fuck up the rest */
-	if (home != NULL) {
-		char shrc_path[512];
-		snprintf(shrc_path, sizeof(shrc_path), "%s/.shrc", home);
-	}
-}
+/* sets an environment variable */
+int sh_env_set(const char* name, const char* value);
+
+/* unsets an environment variable */
+int sh_env_unset(const char* name);
+
+/* prints all the environment variables */
+void sh_env_print_all(void);
+
+#endif
 

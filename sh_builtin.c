@@ -17,8 +17,10 @@
  */
 
 #include "sh_builtin.h"
+#include "sh_env.h"
 
 #include <stdio.h>
+#include <string.h>
 
 int sh_builtin_uname(char* args[]) {
 	/* this is a placeholder */
@@ -47,16 +49,59 @@ int sh_builtin_echo(char* args[]) {
 	return 0;
 }
 
+int sh_builtin_export(char* args[]) {
+	if (args[1] == NULL) {
+		sh_env_print_all();
+		return 0;
+	}
+
+	char* arg = args[1];
+	char* equals = strchr(arg, '=');
+
+	if (equals != NULL) {
+		int var_len = equals - arg;
+		char var_name[256];
+		strncpy(var_name, arg, var_len);
+		var_name[var_len] = '\0';
+
+		char* var_value = equals + 1;
+		sh_env_set(var_name, var_value);
+		return 0;
+	} else {
+		return 0;
+	}
+}
+
+int sh_builtin_unset(char* args[]) {
+	if (args[1] == NULL) {
+		fprintf(stderr, "unset: missing operand\n");
+		return 1;
+	}
+
+	return sh_env_unset(args[1]);
+}
+
+int sh_builtin_env(char* args[]) {
+	sh_env_print_all();
+	return 0;
+}
+
 int (*builtin_commands[])(char* args[]) = {
 	*sh_builtin_echo,
 	*sh_builtin_cat,
-	*sh_builtin_uname
+	*sh_builtin_uname,
+	*sh_builtin_export,
+	*sh_builtin_unset,
+	*sh_builtin_env
 };
 
 char* builtins[] = {
 	"echo",
 	"cat",
-	"uname"
+	"uname",
+	"export",
+	"unset",
+	"env"
 };
 
 int sh_num_builtins() {
