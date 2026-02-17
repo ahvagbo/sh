@@ -23,6 +23,7 @@
 
 #include "sh_builtin.h"
 #include "sh_configs.h"
+#include "sh_prompt.h"
 #include "sh_exec.h"
 #include "sh_env.h"
 
@@ -50,7 +51,10 @@ int main(int argc, char* argv[]) {
 		char* save_ptr = NULL;
 
 		/* todo: set custom shell prompt, we'll find a way to do this */
-		fprintf(stdout, "sh-pre# ");
+		/* fprintf(stdout, "sh-pre# "); */
+		/* we gon' keep this here in case something is fucked up around here */
+
+		sh_prompt_init();
 		fflush(stdout);
 
 		ssize_t read = getline(&line, &len, stdin);
