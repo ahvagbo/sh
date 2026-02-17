@@ -20,6 +20,7 @@
 #include "sh_env.h"
 
 #include <stdio.h>
+#include <stdlib.h>
 #include <string.h>
 
 int sh_builtin_uname(char* args[]) {
@@ -86,13 +87,19 @@ int sh_builtin_env(char* args[]) {
 	return 0;
 }
 
+int sh_builtin_exit(char* args[]) {
+	exit(0);
+	return 0;
+}
+
 int (*builtin_commands[])(char* args[]) = {
 	*sh_builtin_echo,
 	*sh_builtin_cat,
 	*sh_builtin_uname,
 	*sh_builtin_export,
 	*sh_builtin_unset,
-	*sh_builtin_env
+	*sh_builtin_env,
+	*sh_builtin_exit
 };
 
 char* builtins[] = {
@@ -101,7 +108,8 @@ char* builtins[] = {
 	"uname",
 	"export",
 	"unset",
-	"env"
+	"env",
+	"exit"
 };
 
 int sh_num_builtins() {
