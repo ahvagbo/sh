@@ -21,7 +21,6 @@
 
 int sh_builtin_echo(char* args[]);
 int sh_builtin_cat(char* args[]);
-int sh_builtin_uname(char* args[]);
 int sh_builtin_exit(char* args[]);
 
 /* environment variable specific commands */

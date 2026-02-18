@@ -23,12 +23,6 @@
 #include <stdlib.h>
 #include <string.h>
 
-int sh_builtin_uname(char* args[]) {
-	/* this is a placeholder */
-	fprintf(stdout, "Linux\n");
-	return 0;
-}
-
 int sh_builtin_cat(char* args[]) {
 	return 0;
 }
@@ -95,7 +89,6 @@ int sh_builtin_exit(char* args[]) {
 int (*builtin_commands[])(char* args[]) = {
 	*sh_builtin_echo,
 	*sh_builtin_cat,
-	*sh_builtin_uname,
 	*sh_builtin_export,
 	*sh_builtin_unset,
 	*sh_builtin_env,
@@ -105,7 +98,6 @@ int (*builtin_commands[])(char* args[]) = {
 char* builtins[] = {
 	"echo",
 	"cat",
-	"uname",
 	"export",
 	"unset",
 	"env",
