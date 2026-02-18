@@ -19,6 +19,8 @@
 #ifndef SH_PROMPT_H
 #define SH_PROMPT_H
 
+static char workingdir[256];
+
 /* shell prompt initialization */
 void sh_prompt_init(void);
 
