@@ -19,6 +19,9 @@
 #ifndef SH_BUILTIN_H
 #define SH_BUILTIN_H 1
 
+/* we obviously need ts */
+int sh_builtin_help(char* args[]);
+
 int sh_builtin_echo(char* args[]);
 
 /* file utilities, i guess */
