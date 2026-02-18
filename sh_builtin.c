@@ -40,7 +40,13 @@ int sh_builtin_cat(char* args[]) {
 }
 
 int sh_builtin_pwd(char* args[]) {
-	char* current_dir = sh_env_get("PWD");
+	char* current_dir = getcwd(NULL, 0);
+	
+	if (current_dir == NULL) {
+		fprintf(stderr, "pwd: failed\n");
+		return -1;
+	}
+
 	fprintf(stdout, "%s\n", current_dir);
 
 	return 0;
