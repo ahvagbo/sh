@@ -20,7 +20,12 @@
 #define SH_BUILTIN_H 1
 
 int sh_builtin_echo(char* args[]);
+
+/* file utilities, i guess */
 int sh_builtin_cat(char* args[]);
+int sh_builtin_pwd(char* args[]);
+int sh_builtin_cd(char* args[]);
+
 int sh_builtin_exit(char* args[]);
 
 /* environment variable specific commands */

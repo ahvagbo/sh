@@ -17,13 +17,30 @@
  */
 
 #include "sh_builtin.h"
+#include "sh_prompt.h"
 #include "sh_env.h"
 
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include <unistd.h>
 
 int sh_builtin_cat(char* args[]) {
+	return 0;
+}
+
+int sh_builtin_pwd(char* args[]) {
+	char* current_dir = sh_env_get("PWD");
+	fprintf(stdout, "%s\n", current_dir);
+
+	return 0;
+}
+
+int sh_builtin_cd(char* args[]) {
+	if (chdir(args[1]) != 0) {
+		fprintf(stderr, "cd: %s misspelled or not found\n", args[1]);
+	}
+	getcwd(workingdir, sizeof(workingdir) - 1);
 	return 0;
 }
 
@@ -89,6 +106,8 @@ int sh_builtin_exit(char* args[]) {
 int (*builtin_commands[])(char* args[]) = {
 	*sh_builtin_echo,
 	*sh_builtin_cat,
+	*sh_builtin_pwd,
+	*sh_builtin_cd,
 	*sh_builtin_export,
 	*sh_builtin_unset,
 	*sh_builtin_env,
@@ -98,6 +117,8 @@ int (*builtin_commands[])(char* args[]) = {
 char* builtins[] = {
 	"echo",
 	"cat",
+	"pwd",
+	"cd",
 	"export",
 	"unset",
 	"env",
