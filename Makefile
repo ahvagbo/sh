@@ -15,7 +15,7 @@
 # see <https://www.gnu.org/licenses/>/
 
 CC=gcc
-CFLAGS=-Wall -O2 -Wextra -g
+CFLAGS=-Wno-all -O2 -Wno-extra -g
 
 SRC=$(wildcard *.c)
 OBJ=$(SRC:.c=.o)
