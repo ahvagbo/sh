@@ -29,19 +29,6 @@ int sh_builtin_cat(char* args[]) {
 	return 0;
 }
 
-int sh_builtin_pwd(char* args[]) {
-	char* current_dir = getcwd(NULL, 0);
-	
-	if (current_dir == NULL) {
-		fprintf(stderr, "pwd: failed\n");
-		return -1;
-	}
-
-	fprintf(stdout, "%s\n", current_dir);
-
-	return 0;
-}
-
 int sh_builtin_cd(char* args[]) {
 	if (chdir(args[1]) != 0) {
 		fprintf(stderr, "cd: %s misspelled or not found\n", args[1]);
