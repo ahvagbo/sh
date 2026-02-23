@@ -25,16 +25,6 @@
 #include <string.h>
 #include <unistd.h>
 
-int sh_builtin_help(char* args[]) {
-	fprintf(stdout, "All available commands in Latbase Shell:\n");
-
-	for (int i = 0; i < sh_num_builtins(); i++) {
-		fprintf(stdout, "%s\n", builtins[i]);
-	}
-
-	return 0;
-}
-
 int sh_builtin_cat(char* args[]) {
 	return 0;
 }
