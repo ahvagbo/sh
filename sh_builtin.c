@@ -29,23 +29,6 @@ int sh_builtin_cat(char* args[]) {
 	return 0;
 }
 
-int sh_builtin_echo(char* args[]) {
-	size_t i;
-	size_t len = 0;
-	while (args[len]) len++;
-
-	bool first = true;
-	for (i = 1; i < len; i++) {
-		if (!first) fprintf(stdout, " ");
-		fprintf(stdout, "%s", args[i]);
-		first = false;
-	}
-
-	fprintf(stdout, "\n");
-
-	return 0;
-}
-
 int sh_builtin_export(char* args[]) {
 	if (args[1] == NULL) {
 		sh_env_print_all();
