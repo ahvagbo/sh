@@ -29,14 +29,6 @@ int sh_builtin_cat(char* args[]) {
 	return 0;
 }
 
-int sh_builtin_cd(char* args[]) {
-	if (chdir(args[1]) != 0) {
-		fprintf(stderr, "cd: %s misspelled or not found\n", args[1]);
-	}
-	getcwd(workingdir, sizeof(workingdir) - 1);
-	return 0;
-}
-
 int sh_builtin_echo(char* args[]) {
 	size_t i;
 	size_t len = 0;
